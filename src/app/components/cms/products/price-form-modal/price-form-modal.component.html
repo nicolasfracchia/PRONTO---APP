@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ (price) ? 'Edit ' : 'New ' }} price for: <br> {{product.Category.name}} {{product.name}}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="frm">
+    <ion-list alignment="full">
+      <ion-item>
+        <ion-input label="concept" labelPlacement="floating" placeholder="Concept" formControlName="concept"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" step=".5" label="Price" labelPlacement="floating" placeholder="Price" formControlName="price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Section" placeholder="Section" labelPlacement="floating" formControlName="sectionId">
+          <ion-select-option *ngFor="let section of sections" [value]="section.id">{{section.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="frm.invalid">Submit</ion-button>
+    </ion-list>
+  </form>
+</ion-content>
+

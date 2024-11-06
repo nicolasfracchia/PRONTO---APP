@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ (product) ? 'Edit ' + product.name : 'New product' }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="frm">
+    <ion-list alignment="full">
+      <ion-item>
+        <ion-input label="Product name" labelPlacement="floating" placeholder="Product name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="file" (change)="onFileSelected($event)" accept="image/*" label="Product image" labelPlacement="floating" placeholder="Product image" formControlName="image"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Product category" placeholder="Product category" labelPlacement="floating" formControlName="categoryId">
+          <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="frm.invalid">Submit</ion-button>
+    </ion-list>
+  </form>
+</ion-content>

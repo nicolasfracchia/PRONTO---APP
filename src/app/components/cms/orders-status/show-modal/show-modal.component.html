@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ orderStatus.name }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Category information:</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label>ID: </ion-label> {{ orderStatus.id }}
+        </ion-item>
+        <ion-item>
+          <ion-label>Name: </ion-label> {{ orderStatus.name }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button color="warning" expand="block" (click)="formModal(orderStatus)">
+            <ion-icon name="create-outline"></ion-icon>
+            EDIT
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button color="danger" expand="block" (click)="delete(orderStatus)">
+            <ion-icon name="trash-outline"></ion-icon>
+            DELETE
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+
+</ion-content>

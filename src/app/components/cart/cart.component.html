@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      ORDER DETAILS
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>ORDER DETAILS</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row *ngFor="let product of productsInCart">
+          <ion-col size="12" (click)="closeModal({'type':'editQ','sectionId':product.sectionId,'productId':product.productId,'productPriceId':product.productPriceId})">
+            <ion-icon name="create"></ion-icon>
+            {{ product.description }}
+          </ion-col>
+          <ion-col size="6"> x{{ product.quantity }} </ion-col>
+          <ion-col size="3"> ${{ product.unitPrice }} </ion-col>
+          <ion-col size="3"> ${{ product.unitPrice * product.quantity }} </ion-col>
+        </ion-row>
+        <ion-row id="sub-total">
+          <ion-col size="9">SUB-TOTAL:</ion-col>
+          <ion-col size="3">${{ totalPrice }}</ion-col>
+        </ion-row>
+        <ion-row id="gst">
+          <ion-col size="9">Estimated GST:</ion-col>
+          <ion-col size="3">${{ totalPrice * 1.05 | number: '1.2-2' }}</ion-col>
+        </ion-row>
+        <ion-row id="total">
+          <ion-col size="9">TOTAL:</ion-col>
+          <ion-col size="3">${{ totalPrice * 1.05 | number: '1.2-2' }}</ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button color="success" expand="block" (click)="redirectLogin()" *ngIf="!user">LOGIN to place the order</ion-button>
+      <ion-button color="success" expand="block" (click)="formAlert()" *ngIf="user">Set delivery time</ion-button>
+      <ion-button color="danger" expand="block" (click)="resetCart()">Empty cart</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

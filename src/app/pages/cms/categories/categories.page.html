@@ -1,0 +1,16 @@
+<app-header pageTitle="Categories"></app-header>
+<ion-content [fullscreen]="true">
+
+  <ion-card *ngFor="let c of categories" (click)="showModal(c)">
+    <ion-card-header>
+      <ion-card-title>{{ c.name }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button (click)="showModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

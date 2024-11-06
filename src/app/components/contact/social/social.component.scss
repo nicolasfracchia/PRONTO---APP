@@ -1,0 +1,15 @@
+ion-icon{
+    margin-right:3dvw;
+}
+
+ion-list{
+    width:90vw;
+    margin:5vh 5vw;
+    border-radius:5px;
+    background: var(--ion-color-dark-tint);
+    color: #FFFFFF;
+    ion-item{
+        color: #FFFFFF;
+        --background: transparent;
+    }
+}

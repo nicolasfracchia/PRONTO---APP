@@ -1,0 +1,49 @@
+<ion-list id="inbox-list">
+  <ion-list-header *ngIf="user">
+    <h1>{{ user.name }} {{ user.lastName }}</h1>
+  </ion-list-header>
+  <ion-menu-toggle auto-hide="false">
+    <ion-item routerDirection="root" routerLink="/login" lines="none" detail="false" *ngIf="!user">
+      <ion-icon aria-hidden="true" slot="start" name="person-circle"></ion-icon>
+      <ion-label>Login</ion-label>
+    </ion-item>
+    <ion-item routerDirection="root" routerLink="/user-profile" lines="none" detail="false" *ngIf="user">
+      <ion-icon aria-hidden="true" slot="start" name="create"></ion-icon>
+      <ion-label>Edit Profile</ion-label>
+    </ion-item>
+    <ion-item routerDirection="root" routerLink="/order-history" lines="none" detail="false" *ngIf="user">
+      <ion-icon aria-hidden="true" slot="start" name="fast-food"></ion-icon>
+      <ion-label>Orders History</ion-label>
+    </ion-item>
+    <ion-item routerDirection="root" (click)="onLogOut()" lines="none" detail="false" *ngIf="user">
+      <ion-icon aria-hidden="true" slot="start" name="person-circle"></ion-icon>
+      <ion-label>Logout</ion-label>
+    </ion-item>
+    <!--
+    <ion-item routerDirection="root" (click)="getUser()" lines="none" detail="false">
+      <ion-icon aria-hidden="true" slot="start" name="person-circle"></ion-icon>
+      <ion-label>- - - LOG USER - - -</ion-label>
+    </ion-item>
+  -->
+  </ion-menu-toggle>
+</ion-list>
+
+<ion-list>
+  <ion-list-header>Menu</ion-list-header>
+  <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+    <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+      <ion-icon aria-hidden="true" slot="start" [name]="p.icon"></ion-icon>
+      <ion-label>{{ p.title }}</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>
+
+<ion-list *ngIf="user?.role === 1 || user?.role === 2">
+  <ion-list-header>CMS</ion-list-header>
+  <ion-menu-toggle auto-hide="false" *ngFor="let p of AppPagesCmsByUserRole; let i = index">
+    <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+      <ion-icon aria-hidden="true" slot="start" [name]="p.icon"></ion-icon>
+      <ion-label>{{ p.title }}</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>

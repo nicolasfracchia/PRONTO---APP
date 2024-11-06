@@ -1,0 +1,16 @@
+ion-grid{
+    background-color: #FFFFFF;
+    ion-row{
+
+        ion-col{
+
+        }
+        &#sub-total,
+        &#gst,
+        &#total{
+            color: #000000;
+            font-weight: bold;
+        }
+    }
+    
+}

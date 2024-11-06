@@ -1,0 +1,14 @@
+ion-buttons{
+    display: flex;
+    justify-content: space-evenly;
+    margin:5vh auto;
+
+    ion-button{
+        width: 40vw;
+        background-color: var(--ion-color-primary);
+        color: white;
+        &:first-of-type{
+            background-color: var(--ion-color-success);
+        }
+    }
+}

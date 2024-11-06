@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ (user) ? 'Edit ' + user.name : 'New user' }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="frm">
+    <ion-list alignment="full">
+      
+      <ion-item>
+        <ion-input label="Name" labelPlacement="floating" placeholder="Name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Last Name" labelPlacement="floating" placeholder="Last Name" formControlName="lastName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Address" labelPlacement="floating" placeholder="Address" formControlName="address"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" label="Email" labelPlacement="floating" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select label="User Type" placeholder="User Type" labelPlacement="floating" formControlName="type">
+          <ion-select-option *ngFor="let ut of userTypes" [value]="ut.id">{{ ut.type }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+
+      <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="frm.invalid">Submit</ion-button>
+    </ion-list>
+  </form>
+</ion-content>

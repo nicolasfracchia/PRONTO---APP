@@ -1,0 +1,18 @@
+
+ion-card{
+    //background: var(--ion-color-dark-tint);
+    background: #ffffff;
+    //color: #FFFFFF;
+    ion-card-header ion-card-title{
+        color: var(--ion-color-dark-tint);
+    }
+    ion-list{
+        background: transparent;
+        color: var(--ion-color-dark-tint);
+        ion-item{
+            color: var(--ion-color-dark-tint);
+            --background: transparent;
+        }
+    }
+}
+

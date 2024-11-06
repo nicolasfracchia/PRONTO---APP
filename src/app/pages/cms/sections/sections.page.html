@@ -1,0 +1,17 @@
+<app-header pageTitle="Sections"></app-header>
+<ion-content [fullscreen]="true">
+
+  <ion-card *ngFor="let s of sections" (click)="showModal(s)">
+    <ion-card-header>
+      <ion-card-subtitle>{{ s.web }}</ion-card-subtitle>
+      <ion-card-title>{{ s.name }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button (click)="showModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

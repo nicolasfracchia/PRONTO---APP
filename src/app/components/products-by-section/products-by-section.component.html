@@ -1,0 +1,29 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ section.name }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let product of section.products">
+        <ion-thumbnail slot="start">
+          <img alt="{{ product.name }}" src="assets/images/default.png" *ngIf="product.image === 'default.png'" />
+          <img alt="{{ product.name }}" src="{{ foodImagesURL }}{{ product.image }}" *ngIf="product.image !== 'default.png'" />
+        </ion-thumbnail>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>{{ product.name }}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col *ngFor="let price of product.prices">
+              <ion-text>
+                {{ price.concept ? price.concept + ':' : '' }} ${{ price.price }}
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+  </ion-list>
+  </ion-card-content>
+</ion-card>

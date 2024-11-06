@@ -1,0 +1,10 @@
+<app-header pageTitle="Home"></app-header>
+<ion-content [fullscreen]="true">
+
+  <app-login *ngIf="!loggedUser"></app-login>
+
+  <app-logged-user *ngIf="loggedUser" [loggedUser]="loggedUser"></app-logged-user>
+
+  <app-menu></app-menu>
+
+</ion-content>

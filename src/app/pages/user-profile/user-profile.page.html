@@ -1,0 +1,59 @@
+<app-header pageTitle="PROFILE"></app-header>
+<ion-content [fullscreen]="true" color="light" *ngIf="user">
+    
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Name</ion-card-subtitle>
+          <ion-card-title>{{ user.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-end">
+          <ion-button color="warning" (click)="formAlert('name')">
+            <ion-icon name="create-outline"></ion-icon>
+            EDIT
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    
+    
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Last Name</ion-card-subtitle>
+          <ion-card-title>{{ user.lastName }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-end">
+          <ion-button color="warning" (click)="formAlert('lastName')">
+            <ion-icon name="create-outline"></ion-icon>
+            EDIT
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    
+    
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Email</ion-card-subtitle>
+          <ion-card-title>{{ user.email }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-end">
+          <ion-button color="warning" (click)="formAlert('email')">
+            <ion-icon name="create-outline"></ion-icon>
+            EDIT
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    
+    
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Address</ion-card-subtitle>
+          <ion-card-title>{{ user.address }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content class="ion-text-end">
+          <ion-button color="warning" (click)="formAlert('address')">
+            <ion-icon name="create-outline"></ion-icon>
+            EDIT
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    
+</ion-content>

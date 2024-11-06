@@ -1,0 +1,19 @@
+ion-toolbar{
+    text-align: center;
+    ion-title{
+        text-align: center;
+    }
+}
+ion-content{
+    --background: none;
+}
+form{
+    width: 100%;
+}
+
+.ion_select_color_1::part(text) {color: var(--ion-color-medium);}
+.ion_select_color_2::part(text) {color: var(--ion-color-secondary);}
+.ion_select_color_3::part(text) {color: var(--ion-color-primary);}
+.ion_select_color_4::part(text) {color: var(--ion-color-warning);}
+.ion_select_color_5::part(text) {color: var(--ion-color-success);}
+.ion_select_color_6::part(text) {color: var(--ion-color-danger);}

@@ -1,0 +1,26 @@
+<app-header pageTitle="Login"></app-header>
+<ion-content [fullscreen]="true" color="light">
+
+  <ion-card>
+    <ion-img alt="PRONTO - Pizza, Pasta & Pagnotta - Logo" src="assets/images/logo_big_alpha.webp"></ion-img>
+    <ion-card-header>
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form [formGroup]="frm">
+        <ion-list alignment="full">
+          <ion-item>
+            <ion-input label="Email:" labelPlacement="floating" placeholder="Email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="password" label="Password:" labelPlacement="floating" placeholder="Password" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="frm.invalid">Log In</ion-button>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

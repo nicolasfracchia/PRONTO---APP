@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ (category) ? 'Edit ' + category.name : 'New category' }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="frm">
+    <ion-list alignment="full">
+      <ion-item>
+        <ion-input label="Category name" labelPlacement="floating" placeholder="Category name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="frm.invalid">Submit</ion-button>
+    </ion-list>
+  </form>
+</ion-content>

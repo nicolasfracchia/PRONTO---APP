@@ -1,0 +1,25 @@
+<app-header pageTitle="Register"></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <form [formGroup]="frm">
+    <ion-list alignment="full">
+      <ion-item>
+        <ion-input label="Name" labelPlacement="floating" placeholder="Name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Last Name" labelPlacement="floating" placeholder="Last Name" formControlName="lastName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="email" label="Email" labelPlacement="floating" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Address" labelPlacement="floating" placeholder="Address" formControlName="address"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [type]="showPassword ? 'text' : 'password'" id="inputPassword" label="Password" labelPlacement="floating" placeholder="Password" formControlName="password"></ion-input>
+        <ion-icon slot="end" name="eye" (click)="showPasswordToggle()"></ion-icon>
+      </ion-item>
+      <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="frm.invalid">Submit</ion-button>
+    </ion-list>
+  </form>
+</ion-content>

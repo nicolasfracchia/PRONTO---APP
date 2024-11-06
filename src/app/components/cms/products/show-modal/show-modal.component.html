@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ product.Category.name }} - {{ product.name }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Product information:</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <img alt="{{ product.Category.name }} - {{ product.name }}" src="{{ showImage }}" />
+      <ion-list>
+        <ion-item>
+          <ion-label>ID: </ion-label> {{ product.id }}
+        </ion-item>
+        <ion-item>
+          <ion-label>Name: </ion-label> {{ product.name }}
+        </ion-item>
+        <ion-item>
+          <ion-label>Image: </ion-label> {{ product.image }}
+        </ion-item>
+        <ion-item>
+          <ion-label>Category: </ion-label> {{ product.Category.name }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button color="warning" expand="block" (click)="editProductModal(product)">
+            <ion-icon name="create-outline"></ion-icon>
+            EDIT
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button color="danger" expand="block" (click)="delete(product)">
+            <ion-icon name="trash-outline"></ion-icon>
+            DELETE
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Product prices:</ion-card-title>
+      <ion-button color="primary" expand="block" (click)="formPriceModal(product)">
+        <ion-icon name="trash-outline"></ion-icon>
+        ADD NEW PRICE
+      </ion-button>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card *ngFor="let p of product.ProductPrices">
+        <ion-card-header>
+          <ion-card-subtitle>({{p.Section?.web}}) {{p.Section?.name}}</ion-card-subtitle>
+          <ion-card-title>{{ (p.concept) ? p.concept+': ' : '' }} ${{ p.price }}</ion-card-title>
+        </ion-card-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button color="warning" expand="block" (click)="formPriceModal(product, p)">
+                <ion-icon name="create-outline"></ion-icon>
+                EDIT
+              </ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button color="danger" expand="block" (click)="deletePrice(p)">
+                <ion-icon name="trash-outline"></ion-icon>
+                DELETE
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

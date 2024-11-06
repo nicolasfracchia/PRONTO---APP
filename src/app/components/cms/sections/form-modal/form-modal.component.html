@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ (section) ? 'Edit ' + section.name : 'New section' }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="frm">
+    <ion-list alignment="full">
+      <ion-item>
+        <ion-input label="Section name" labelPlacement="floating" placeholder="Section name" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Section web location" placeholder="Section web" labelPlacement="floating" formControlName="web">
+          <ion-select-option *ngFor="let wo of webOptions" [value]="wo">{{ wo }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-button expand="block" color="success" (click)="onSubmit()" [disabled]="frm.invalid">Submit</ion-button>
+    </ion-list>
+  </form>
+</ion-content>

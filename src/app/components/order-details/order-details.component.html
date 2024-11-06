@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar [color]="colors[order.OrdersStatus.id]">
+    <ion-title>
+      {{ order.OrdersStatus.name }}
+    </ion-title>
+    <ion-item [color]="colors[order.OrdersStatus.id]">
+      Delivery: {{ order.forDate }} {{ order.forTime }}
+    </ion-item>
+    <ion-item *ngIf="loggedUser.role === 1 || loggedUser.role === 2">
+      <form [formGroup]="frm">
+        <ion-select label="Change status to:" formControlName="nextOrderStatus" (ionChange)="changeBtnColor()" [class]="'ion_select_color_'+nextOrderStatusId">
+          <ion-select-option *ngFor="let s of orderStatuses" [value]="s.id">{{ s.name }}</ion-select-option>
+        </ion-select>
+        <ion-button [color]="colors[nextOrderStatusId]" expand="full" (click)="updateStatus()">UPDATE STATUS</ion-button>
+      </form>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Order details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>Order placed: <br> {{order.createdAt}}<br><br></ion-item>
+        <ion-item>Last status update: <br> {{order.updatedAt}}</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>User details</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>Name: <br> {{order.User.name}} {{order.User.lastName}}<br><br></ion-item>
+        <ion-item>Address: <br> {{order.User.address}}<br><br></ion-item>
+        <ion-item>Email: <br> {{order.User.email}}</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Items</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row *ngFor="let p of order.OrdersProducts">
+          <ion-col size="12">
+            {{ p.ProductPrice.Section.name }} - {{ p.ProductPrice.Product.name }} {{ p.ProductPrice.Product.Category.name }} ({{ p.ProductPrice.concept }})
+          </ion-col>
+          <ion-col size="6"> x{{ p.quantity }} </ion-col>
+          <ion-col size="3"> ${{ p.unitPrice | number: '1.2-2' }} </ion-col>
+          <ion-col size="3"> ${{ p.unitPrice * p.quantity | number: '1.2-2' }} </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar [color]="colors[order.OrdersStatus.id]">
+    <ion-title>
+      TOTAL (+GST): ${{ order.total * 1.05 | number: '1.2-2' }}
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

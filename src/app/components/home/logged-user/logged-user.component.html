@@ -1,0 +1,9 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title><h3>Welcome {{ loggedUser.name }} {{ loggedUser.lastName}}!</h3></ion-card-title>
+    <ion-card-subtitle>{{ subtitle }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <app-orders-list [orders]="pendingOrders" [loggedUser]="loggedUser" (refreshOrders)="getPendingOrders()"></app-orders-list>
+  </ion-card-content>
+</ion-card>

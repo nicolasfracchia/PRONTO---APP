@@ -1,0 +1,43 @@
+ion-grid{
+    ion-row{
+        justify-content: space-evenly;
+        ion-col{
+            ion-list{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                margin:3vh auto 0 auto;
+                width:40vw;
+                height: 17vh;
+                ion-item{
+                    h3{
+                        text-align: center;
+                        color:var(--ion-color-warning);
+                    }
+                    ion-icon{
+                        margin:0 auto;
+                        width:14vw;
+                        height:14vw;
+                        color:var(--ion-color-warning);
+                    }
+                }
+            }
+            &.orderHere{
+                ion-list{
+                    background-color: var(--ion-color-warning);
+                    ion-item{
+                        background-color: var(--ion-color-warning);
+                        --background: var(--ion-color-warning);
+                        h3{
+                            color:white;
+                        }
+                        ion-icon{
+                            color: white;
+                        }
+                    }
+                }           
+            }
+        }
+    }
+}
